@@ -5,7 +5,10 @@ import styles from "../styles/Home.module.css";
 import { Router, useRouter } from "next/router";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../firebase/firebase";
+// import { AuthContext } from "../../context/AuthContext";
+var localStorage = require("localStorage");
 function Login() {
+  // const { signedUser } = useContext(AuthContext);
   const [email, getEmail] = useState("");
   const [password, getPass] = useState("");
   const router = useRouter();
@@ -19,9 +22,13 @@ function Login() {
     e.preventDefault();
 
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then((signedUser) => {
         // Signed in
-        const user = userCredential.user;
+        const user = signedUser.user;
+        // console.log(user);
+        window.localStorage.setItem("users", user.uid);
+        const curuser = window.localStorage.getItem("users");
+        console.log(curuser.email);
         alert("success login");
         // ...
         router.push("/next");

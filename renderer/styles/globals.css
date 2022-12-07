@@ -20,3 +20,12 @@
     @apply text-white font-bold px-4 py-2 rounded bg-blue-600 hover:bg-blue-500;
   }
 } */
+h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+h2 {
+  color: darkblue;
+  font-size: 30px;
+  font-weight: 600;
+}

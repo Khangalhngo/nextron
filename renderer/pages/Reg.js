@@ -8,6 +8,7 @@ import { async } from "@firebase/util";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../firebase/firebase";
 // import { collection, doc, addDoc } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 // import firebase from "../../firebase/firebase";
 // import firebase from "firebase";
 import { collection, addDoc } from "firebase/firestore";
@@ -57,42 +58,65 @@ function Reg() {
   const handleClick1 = async (e) => {
     e.preventDefault();
     if (validation() == true) {
+      // try {
+      //   try {
+      //   //   const docRef = await addDoc(collection(db, "users"), {
+      //   //     firstname: ner,
+      //   //     lastname: ovog,
+      //   //     phone_number: pnum,
+      //   //     email: email,
+      //   //     gender: gender,
+      //   //     BirthYear: year,
+      //   //     BirthDay: day,
+      //   //     BirthMonth: month,
+      //   //     Address: address,
+      //   //   });
+      //   // } catch (e) {
+      //   //   console.error("Error adding document: ", e);
+      //   // }
+      // } catch (error) {
+      //   console.log(error);
+      //   alert(error);
+      // }
+      // const res = createUserWithEmailAndPassword(auth, email, password)
+      //   .then(async (UserImpl) => {
+      //     // Signed in
+      //     const docRef = doc(db, "SignedUsers", UserImpl.user.uid);
+      //     await setDoc(docRef, {
+      //       uid: UserImpl.user.uid,
+      //       firstname: ner,
+      //       lastname: ovog,
+      //       phone_number: pnum,
+      //       email: email,
+      //       gender: gender,
+      //       BirthYear: year,
+      //       BirthDay: day,
+      //       BirthMonth: month,
+      //       Address: address,
+      //     });
+      //     // const user = UserImpl.user;
+      //     // ...
+      //     console.log(user);
+      //     alert("success");
+      //     router.push("/Login");
+      //   })
+      //   .catch((error) => {
+      //     const errorCode = error.code;
+      //     const errorMessage = error.message;
+      //     // ..
+      //     alert(errorCode);
+      //   });
+      // const displayName = e.username;
+      // const email = e.email;
+      // const password = e.password;
       try {
-        // const docRef = addDoc(collection(db, "users"), {
-        //   firstname: ner,
-        //   lastname: ovog,
-        //   phone_number: pnum,
-        //   email: email,
-        //   gender: gender,
-        //   BirthYear: year,
-        //   BirthDay: day,
-        //   BirthMonth: month,
-        //   Address: address,
-        // });
-        // console.log("Document written with ID: ", docRef.id);
-        // firebase.firestore().collection("users").doc("user").set({
-        // });
-        //   db.collection("users")
-        //     .add({
-        //       firstname: ner,
-        //       lastname: ovog,
-        //       phone_number: pnum,
-        //       email: email,
-        //       gender: gender,
-        //       BirthYear: year,
-        //       BirthDay: day,
-        //       BirthMonth: month,
-        //       Address: address,
-        //     })
-        //     .then((docRef) => {
-        //       const docId = docRef.id;
-        //       console.log(docId);
-        //     })
-        //     .catch((err) => {
-        //       console.log("dotor" + err);
-        //     });
-        try {
-          const docRef = await addDoc(collection(db, "users"), {
+        const res = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        ).then(async (UserImpl) => {
+          const docRef = doc(db, "users", UserImpl.user.uid);
+          await setDoc(docRef, {
             firstname: ner,
             lastname: ovog,
             phone_number: pnum,
@@ -103,30 +127,11 @@ function Reg() {
             BirthMonth: month,
             Address: address,
           });
-          // console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-          console.error("Error adding document: ", e);
-        }
-      } catch (error) {
-        console.log(error);
-        alert(error);
-      }
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          // ...
-          console.log(user);
-          alert("success");
-
-          router.push("/Login");
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // ..
-          alert(errorCode);
         });
+        router.push("/Login");
+      } catch (e) {
+        alert(e.message);
+      }
     } else {
       console.log("ALDAAAAAAAAAAAAAAAAAA");
     }

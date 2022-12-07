@@ -14,7 +14,9 @@
     "electron-serve": "^1.1.0",
     "electron-store": "^8.1.0",
     "firebase": "^9.14.0",
-    "firebase-admin": "^11.3.0"
+    "firebase-admin": "^11.3.0",
+    "localstorage": "^1.0.1",
+    "react-context": "^0.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
