@@ -4,62 +4,27 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { app } from "../../../firebase/firebase";
 import { useEffect } from "react";
 import { db } from "../../../firebase/firebase";
-import { doc, updateDoc, arrayUnion, getDoc } from "firebase/firestore";
+
 import { async } from "@firebase/util";
 import SignOut from "../SignOut";
 var localStorage = require("localStorage");
 const UserComp = () => {
-  const [object, setObject] = useState();
-  const [curuserstateuid, setCurUserState] = useState("hooson");
+  const [ner, setNer] = useState("");
+  const [ovog, setOvog] = useState("");
+  const [pnum, setPnum] = useState("");
+  const [email, setHnum] = useState("");
+  const [gender, setGender] = useState("");
+  const [address, setAddress] = useState("");
 
   useEffect(() => {
-    const curuseruid = window.localStorage.getItem("users");
-    setCurUserState(curuseruid);
+    setNer(window.localStorage.getItem("ner"));
+    setOvog(window.localStorage.getItem("ovog"));
+    setPnum(window.localStorage.getItem("pnum"));
+    setHnum(window.localStorage.getItem("email"));
+    setGender(window.localStorage.getItem("gender"));
+    setAddress(window.localStorage.getItem("Address"));
   });
-  // console.log(curuserstateuid);
-  // const signedUsersDocRef = doc(db, "users", curuserstateuid);
-  // console.log(signedUsersDocRef);
 
-  // const docRef = doc(db, "cities", "SF");
-  // const docSnap = getDoc(signedUsersDocRef);
-  // console.log("Document data:", docSnap.data());
-
-  // getDoc(doc(db, "users", curuserstateuid)).then((docSnap) => {
-  //   if (docSnap.exists()) {
-  //     console.log("Document data:", docSnap.data());
-  //   } else {
-  //     console.log("No such document!");
-  //   }
-  //   // setObject(docSnap.data());
-  // });
-  const [signedUserData, setSignedUserData] = useState({});
-  const fetchSignedUserDoc = async () => {
-    const docRef = doc(db, "users", curuserstateuid);
-
-    window.localStorage.setItem("docRef", JSON.stringify(docRef));
-    const docReff = window.localStorage.getItem("docRef");
-    try {
-      const docSnap = await getDoc(docReff);
-      console.log(docSnap);
-      setSignedUserData(docSnap);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  // console.log(
-  //   "--------------------------------------------------------------------------------------------",
-  //   signedUserData
-  // );
-  useEffect(() => {
-    fetchSignedUserDoc();
-  }, []);
-  // if (docSnap.exists()) {
-
-  // } else {
-  //   // doc.data() will be undefined in this case
-  //   console.log("No such document!");
-  // }
   return (
     <div className={styles.container}>
       <div className={styles.parent}>
@@ -68,7 +33,7 @@ const UserComp = () => {
             <img src="/images/userpro.png" />
           </div>
 
-          <h1>{signedUserData.firstname}</h1>
+          <h1>{ner}</h1>
           <h1>Оруулсан зарын тоо</h1>
           <h2>100</h2>
         </div>
@@ -83,27 +48,27 @@ const UserComp = () => {
             <tbody>
               <tr>
                 <td className={styles.tg0lax}>Овог</td>
-                <td className={styles.tg0lax}>{signedUserData.lastname}</td>
+                <td className={styles.tg0lax}>{ovog}</td>
               </tr>
               <tr>
                 <td className={styles.tg0lax}>Нэр</td>
-                <td className={styles.tg0lax}>{signedUserData.firstname}</td>
+                <td className={styles.tg0lax}>{ner}</td>
               </tr>
               <tr>
                 <td className={styles.tg0lax}>Утасны дугаар</td>
-                <td className={styles.tg0lax}>{signedUserData.phone_number}</td>
+                <td className={styles.tg0lax}>{pnum}</td>
               </tr>
               <tr>
                 <td className={styles.tg0lax}>E-mail</td>
-                <td className={styles.tg0lax}>{signedUserData.email}</td>
+                <td className={styles.tg0lax}>{email}</td>
               </tr>
               <tr>
                 <td className={styles.tg0lax}>Хүйс</td>
-                <td className={styles.tg0lax}>{signedUserData.gender}</td>
+                <td className={styles.tg0lax}>{gender}</td>
               </tr>
               <tr>
                 <td className={styles.tg0lax}>Хаяг</td>
-                <td className={styles.tg0lax}>{signedUserData.Address}</td>
+                <td className={styles.tg0lax}>{address}</td>
               </tr>
             </tbody>
           </table>

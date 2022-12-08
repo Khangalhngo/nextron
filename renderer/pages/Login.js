@@ -5,14 +5,16 @@ import styles from "../styles/Home.module.css";
 import { Router, useRouter } from "next/router";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../firebase/firebase";
-// import { AuthContext } from "../../context/AuthContext";
+import { doc, updateDoc, arrayUnion, getDoc } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
+import { setCookie, deleteCookie, getCookie } from "cookies-next";
 var localStorage = require("localStorage");
 function Login() {
-  // const { signedUser } = useContext(AuthContext);
   const [email, getEmail] = useState("");
   const [password, getPass] = useState("");
   const router = useRouter();
 
+  const [signedUserData, setSignedUserData] = useState({});
   const handleClick = (e) => {
     e.preventDefault();
     router.push("/Reg");
@@ -25,10 +27,10 @@ function Login() {
       .then((signedUser) => {
         // Signed in
         const user = signedUser.user;
-        // console.log(user);
         window.localStorage.setItem("users", user.uid);
         const curuser = window.localStorage.getItem("users");
-        console.log(curuser.email);
+        fetchSignedUserDoc(curuser);
+        console.log(curuser);
         alert("success login");
         // ...
         router.push("/next");
@@ -39,7 +41,23 @@ function Login() {
         alert(errorCode);
       });
   };
+  const fetchSignedUserDoc = async (curuserstateuid) => {
+    const docRef = doc(db, "users", curuserstateuid);
+    try {
+      const docSnap = await getDoc(docRef);
 
+      console.log(docSnap.data());
+      setSignedUserData(docSnap.data());
+      window.localStorage.setItem("ner", docSnap.data().firstname);
+      window.localStorage.setItem("ovog", docSnap.data().lastname);
+      window.localStorage.setItem("pnum", docSnap.data().phone_number);
+      window.localStorage.setItem("email", docSnap.data().email);
+      window.localStorage.setItem("gender", docSnap.data().gender);
+      window.localStorage.setItem("Address", docSnap.data().Address);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <div className="body">
       <Head>
