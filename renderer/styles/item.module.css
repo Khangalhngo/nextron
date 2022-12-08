@@ -1,0 +1,71 @@
+.container {
+  width: 800px;
+  height: 100%;
+  background-color: #8aacc8;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  margin-left:25%;
+  border-radius: 10px;
+  color: black;
+}
+.body {
+  width: 100%;
+  height: 100%;
+  color: black;
+}
+.password input {
+  width: 60%;
+  padding: 5px 20px;
+  margin: 6px 0;
+  /* margin-bottom: 10px; */
+  display: flexbox;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  color: black;
+}
+.password label {
+  display: flex;
+  /* padding: 2px; */
+  color: black;
+  font-size: 14px;
+  margin-left: 25px;
+}
+.button1 button {
+  padding: 6px;
+  margin-top: 10px;
+  border-radius: 10px;
+  width: 80px;
+  background-color: #90979c;
+  border: none;
+  color: white;
+}
+.button2 button {
+  padding: 6px;
+  margin-top: 10px;
+  border-radius: 10px;
+  width: 80px;
+  background-color: #1a6fa3;
+  border: none;
+  color: white;
+}
+.choose select{
+    width: 60%;
+  padding: 5px 20px;
+  margin: 6px 0;
+  /* margin-bottom: 10px; */
+  display: flexbox;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  color: black;
+}
+.choose label{
+   display: flex;
+  /* padding: 2px; */
+  color: black;
+  font-size: 14px;
+  margin-left: 25px
+}
+.mail {
+    text-decoration: underline;
+}
