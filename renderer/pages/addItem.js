@@ -299,6 +299,7 @@ function addItem() {
             <button type="button" onClick={handleClick1}>
               Буцах
             </button>
+            
           </div>
           <div className={styles.button2}>
             <button type="button" onClick={handleClick}>

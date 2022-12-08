@@ -42,13 +42,13 @@ const ItemList = () => {
         <Card />
         <Card />
         <Card />
+        {/* <Card />
+        {/* <Card />
         <Card />
         <Card />
         <Card />
         <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card /> */}
       </div>
     </div>
   );

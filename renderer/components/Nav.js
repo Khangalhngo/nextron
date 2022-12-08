@@ -12,7 +12,11 @@ const Nav = () => {
         {" "}
         <a href="/userprofile">Хэрэглэгчийн нэр болон утасны дугаар</a>
       </div>
-      <button className={styles.navbutton}> Зар нэмэх</button>
+      <button className={styles.navbutton}>
+        <a href="/addItem">
+          Зар нэмэх
+          </a>
+      </button>
     </nav>
   );
 };
