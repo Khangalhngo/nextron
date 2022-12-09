@@ -8,6 +8,7 @@ import { async } from "@firebase/util";
 import { app } from "../../firebase/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
+import { doc, updateDoc, arrayUnion, getDoc, setDoc } from "firebase/firestore";
 import Router from "next/router";
 function addItem() {
   const [title, setTitle] = useState("");
@@ -26,11 +27,24 @@ function addItem() {
   const [mail, setMail] = useState("");
   const router = useRouter();
   console.log(address);
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   router.push("/Itempage");
-  // };
-  const handleClick1 = (e) => {
+
+  const handleClick1 = async (e) => {
+    const curuser = window.localStorage.getItem("users");
+    const docRef = doc(db, "items", curuser);
+    await setDoc(docRef, {
+      title: title,
+      type: type,
+      price: price,
+      choose: choose,
+      status: status,
+      url: url,
+      desc: desc,
+      address: address,
+      name: name,
+      phone: phone,
+      choose2: choose2,
+      mail: mail,
+    });
     e.preventDefault();
     router.push("/Itempage");
   };

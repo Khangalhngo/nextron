@@ -1,5 +1,13 @@
 import styles from "../styles/Home.module.css";
+import { useEffect } from "react";
+import React, { useState } from "react";
 const Nav = () => {
+  const [ner, setNer] = useState("");
+  const [pnum, setPnum] = useState("");
+  useEffect(() => {
+    setNer(window.localStorage.getItem("ner"));
+    setPnum(window.localStorage.getItem("pnum"));
+  });
   return (
     <nav className={styles.navbar}>
       <div className={styles.navlogo}>
@@ -10,12 +18,12 @@ const Nav = () => {
       </div>
       <div className={styles.userNamepnum}>
         {" "}
-        <a href="/userprofile">Хэрэглэгчийн нэр болон утасны дугаар</a>
+        <a href="/userprofile">
+          {ner}({pnum})
+        </a>
       </div>
       <button className={styles.navbutton}>
-        <a href="/addItem">
-          Зар нэмэх
-          </a>
+        <a href="/addItem">Зар нэмэх</a>
       </button>
     </nav>
   );
