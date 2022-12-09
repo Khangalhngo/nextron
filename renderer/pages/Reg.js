@@ -25,30 +25,6 @@ function Reg() {
   const [month, setMonth] = useState("");
   const [address, setAddress] = useState("");
   const router = useRouter();
-  // const db = firebase.firestore();
-  function writeUserData(
-    ner,
-    ovog,
-    pnum,
-    email,
-    gender,
-    year,
-    day,
-    month,
-    address
-  ) {
-    set(ref(db, "users/" + pnum), {
-      firstname: ner,
-      lastname: ovog,
-      phone_number: pnum,
-      email: email,
-      gender: gender,
-      BirthYear: year,
-      BirthDay: day,
-      BirthMonth: month,
-      Address: address,
-    });
-  }
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -58,57 +34,6 @@ function Reg() {
   const handleClick1 = async (e) => {
     e.preventDefault();
     if (validation() == true) {
-      // try {
-      //   try {
-      //   //   const docRef = await addDoc(collection(db, "users"), {
-      //   //     firstname: ner,
-      //   //     lastname: ovog,
-      //   //     phone_number: pnum,
-      //   //     email: email,
-      //   //     gender: gender,
-      //   //     BirthYear: year,
-      //   //     BirthDay: day,
-      //   //     BirthMonth: month,
-      //   //     Address: address,
-      //   //   });
-      //   // } catch (e) {
-      //   //   console.error("Error adding document: ", e);
-      //   // }
-      // } catch (error) {
-      //   console.log(error);
-      //   alert(error);
-      // }
-      // const res = createUserWithEmailAndPassword(auth, email, password)
-      //   .then(async (UserImpl) => {
-      //     // Signed in
-      //     const docRef = doc(db, "SignedUsers", UserImpl.user.uid);
-      //     await setDoc(docRef, {
-      //       uid: UserImpl.user.uid,
-      //       firstname: ner,
-      //       lastname: ovog,
-      //       phone_number: pnum,
-      //       email: email,
-      //       gender: gender,
-      //       BirthYear: year,
-      //       BirthDay: day,
-      //       BirthMonth: month,
-      //       Address: address,
-      //     });
-      //     // const user = UserImpl.user;
-      //     // ...
-      //     console.log(user);
-      //     alert("success");
-      //     router.push("/Login");
-      //   })
-      //   .catch((error) => {
-      //     const errorCode = error.code;
-      //     const errorMessage = error.message;
-      //     // ..
-      //     alert(errorCode);
-      //   });
-      // const displayName = e.username;
-      // const email = e.email;
-      // const password = e.password;
       try {
         const res = await createUserWithEmailAndPassword(
           auth,
