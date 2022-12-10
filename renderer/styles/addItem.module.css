@@ -1,0 +1,174 @@
+.body {
+  width: 100%;
+  height: 100%;
+}
+.navlogo {
+  margin: 20px;
+}
+.navbar {
+  margin-top: 0px;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #2286c3;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.navHome {
+  margin: 20px;
+}
+.ptag {
+  text-align: center;
+  padding-left: 50px;
+}
+.userNamepnum {
+  margin: 20px;
+  margin-left: auto;
+}
+.navbutton {
+  margin: 20px;
+  background-color: #64b5f6;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+}
+.navlogo {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 90px;
+  padding-top: 10px;
+}
+.logo {
+  width: 60px;
+  height: 60px;
+  transform: translateX(200%);
+
+  border-radius: 90%;
+  background-color: white;
+}
+.logo img {
+  padding-top: 5px;
+  margin-left: 5px;
+}
+.body {
+  width: 100%;
+  height: 80%;
+  background-color: #8aacc8;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 20%;
+  border-radius: 10px;
+}
+.container {
+  width: 100%;
+  height: 130%;
+  position: relative;
+  background-color: rgba(238, 255, 255, 1);
+  text-align: center;
+  margin-top: 0px;
+  margin-left: 0%;
+  color: black;
+}
+.password input {
+  width: 50%;
+  padding: 5px 20px;
+  margin: 8px 30px;
+  /* margin-bottom: 10px; */
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.desc input {
+  width: 50%;
+  padding: 50px 20px;
+  margin: 8px 30px;
+  /* margin-bottom: 10px; */
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.radio input {
+  margin: 0px 40px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+}
+.radio1 label {
+  text-align: right;
+  position: absolute;
+}
+.radio1 input {
+  margin-right: 10px;
+}
+
+.password label {
+  width: 130px;
+  position: relative;
+  padding: 0px;
+  color: black;
+  font-size: 14px;
+  margin-left: 25px;
+  display: inline-block;
+  text-align: right;
+}
+.choose label {
+  width: 130px;
+  position: relative;
+  padding: 2px;
+  color: black;
+  font-size: 14px;
+  margin-left: 25px;
+  display: inline-block;
+  text-align: right;
+}
+.desc label {
+  width: 130px;
+  position: relative;
+  padding: 2px;
+  color: black;
+  font-size: 14px;
+  margin-left: 25px;
+  display: inline-block;
+  text-align: right;
+}
+.button1 button {
+  position: absolute;
+  padding: 6px;
+  margin-left: 210px;
+  margin-top: 20px;
+  border-radius: 10px;
+  width: 100px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: rgba(235, 237, 242, 1);
+  color: black;
+}
+.button2 button {
+  background-color: #1a6fa3;
+  color: white;
+  margin-right: 200px;
+  padding: 6px;
+  margin-top: 20px;
+  border-radius: 10px;
+  width: 100px;
+}
+.choose select {
+  width: 50%;
+  padding: 5px 20px;
+  margin: 8px 30px;
+  /* margin-bottom: 10px; */
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.choose label {
+  /* padding: 2px; */
+  color: black;
+  font-size: 14px;
+  /* margin-left: 25px */
+}
+.mail {
+  text-decoration: underline;
+}

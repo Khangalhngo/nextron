@@ -4,7 +4,6 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { app } from "../../../firebase/firebase";
 import { useEffect } from "react";
 import { db } from "../../../firebase/firebase";
-
 import { async } from "@firebase/util";
 import SignOut from "../SignOut";
 var localStorage = require("localStorage");
