@@ -11,13 +11,14 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import { doc, updateDoc, arrayUnion, getDoc, setDoc } from "firebase/firestore";
 import Router from "next/router";
+import Nav from "../components/Nav";
 function addItem() {
   const [ner, setNer] = useState("");
   const [pnum, setPnum] = useState("");
- useEffect(() => {
+  useEffect(() => {
     setNer(window.localStorage.getItem("ner"));
-  setPnum(window.localStorage.getItem("pnum"));
-   })
+    setPnum(window.localStorage.getItem("pnum"));
+  });
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
   const [price, setPrice] = useState("");
@@ -37,8 +38,22 @@ function addItem() {
 
   const handleClick1 = async (e) => {
     const curuser = window.localStorage.getItem("users");
-    const docRef = doc(db, "items", curuser);
-    await setDoc(docRef, {
+    // const docRef = doc(db, "items");
+    // await setDoc(docRef, {
+    //   title: title,
+    //   type: type,
+    //   price: price,
+    //   choose: choose,
+    //   status: status,
+    //   url: url,
+    //   desc: desc,
+    //   address: address,
+    //   name: name,
+    //   phone: phone,
+    //   choose2: choose2,
+    //   mail: mail,
+    // });
+    const docRef = await addDoc(collection(db, "items"), {
       title: title,
       type: type,
       price: price,
@@ -53,24 +68,12 @@ function addItem() {
       mail: mail,
     });
     e.preventDefault();
-    router.push("/Itempage");
-    
+    router.push("/ItemPage");
   };
+
   return (
-    <><nav className={styles.navbar}>
-      <div className={styles.navlogo}>
-        <img src="/images/download.png" />
-      </div>
-      <div className={styles.navHome}>
-        <a href="/next">Home</a>
-      </div>
-      <div className={styles.userNamepnum}>
-        {" "}
-        <a href="/userprofile">
-          {ner}({pnum})
-        </a>
-      </div>
-    </nav>
+    <>
+      <Nav />
       <div className="body">
         <Head>
           <title>addItems</title>
@@ -84,7 +87,7 @@ function addItem() {
                 value={title}
                 onChange={(e) => {
                   setTitle(e.target.value);
-                } }
+                }}
               ></input>
             </div>
             <div className={styles.password}>
@@ -94,7 +97,7 @@ function addItem() {
                 value={type}
                 onChange={(e) => {
                   setType(e.target.value);
-                } }
+                }}
               ></input>
             </div>
             <div className={styles.password}>
@@ -104,7 +107,7 @@ function addItem() {
                 value={price}
                 onChange={(e) => {
                   setPrice(e.target.value);
-                } }
+                }}
               ></input>
             </div>
             <div className={styles.radio}>
@@ -115,8 +118,9 @@ function addItem() {
                 value="vne tohirno"
                 onChange={(e) => {
                   setChoose(e.target.value);
-                } }
-                name="choose" />{" "}
+                }}
+                name="choose"
+              />{" "}
               Үнэ тохирно
               <input
                 className="choose"
@@ -124,8 +128,9 @@ function addItem() {
                 value="solino"
                 onChange={(e) => {
                   setChoose(e.target.value);
-                } }
-                name="choose" />{" "}
+                }}
+                name="choose"
+              />{" "}
               Солино
               <input
                 className="choose"
@@ -133,8 +138,9 @@ function addItem() {
                 value="vnegvi"
                 onChange={(e) => {
                   setChoose(e.target.value);
-                } }
-                name="choose" />
+                }}
+                name="choose"
+              />
               Үнэгүй
             </div>
             <div className={styles.password}>
@@ -146,7 +152,7 @@ function addItem() {
                 value={status}
                 onChange={(e) => {
                   setStatus(e.target.value);
-                } }
+                }}
               ></input>
             </div>
             <div className={styles.password}>
@@ -158,7 +164,7 @@ function addItem() {
                 value={cover}
                 onChange={(e) => {
                   setCover(e.target.value);
-                } }
+                }}
               ></input>
             </div>
             <div className={styles.password}>
@@ -170,7 +176,7 @@ function addItem() {
                 value={file}
                 onChange={(e) => {
                   setFile(e.target.value);
-                } }
+                }}
               ></input>
             </div>
             <div className={styles.password}>
@@ -182,7 +188,7 @@ function addItem() {
                 value={url}
                 onChange={(e) => {
                   setURL(e.target.value);
-                } }
+                }}
               ></input>
             </div>
             <div className={styles.desc}>
@@ -194,7 +200,7 @@ function addItem() {
                 value={desc}
                 onChange={(e) => {
                   setDesc(e.target.value);
-                } }
+                }}
               ></input>
             </div>
             <div className={styles.choose}>
@@ -207,7 +213,7 @@ function addItem() {
                 onChange={(e) => {
                   setAddress(e.target.value);
                   // }}required
-                } }
+                }}
               >
                 <option value="Улаанбаатар">Улаанбаатар</option>
                 <option value="Архангай">Архангай</option>
@@ -242,7 +248,7 @@ function addItem() {
                 value={name}
                 onChange={(e) => {
                   setName(e.target.value);
-                } }
+                }}
               ></input>
             </div>
             <div className={styles.password}>
@@ -254,7 +260,7 @@ function addItem() {
                 value={phone}
                 onChange={(e) => {
                   setPhone(e.target.value);
-                } }
+                }}
               ></input>
             </div>
             <div className={styles.radio1}>
@@ -264,8 +270,9 @@ function addItem() {
                 value="utas, chat"
                 onChange={(e) => {
                   setChoose2(e.target.value);
-                } }
-                name="choose" />{" "}
+                }}
+                name="choose"
+              />{" "}
               <label>Утас, чатаар</label>
               <br></br>
               <input
@@ -274,8 +281,9 @@ function addItem() {
                 value="zuwhun utas"
                 onChange={(e) => {
                   setChoose2(e.target.value);
-                } }
-                name="choose" />{" "}
+                }}
+                name="choose"
+              />{" "}
               <label>Зөвхөн утсаар</label>
             </div>
             <div className={styles.password}>
@@ -287,30 +295,31 @@ function addItem() {
                 value={mail}
                 onChange={(e) => {
                   setMail(e.target.value);
-                } }
+                }}
               ></input>
             </div>
-            <p className = {styles.ptag}>
+            <p className={styles.ptag}>
               Холбоо барих мэдээллээ солих бол{" "}
               <a href="/userprofile" className={styles.mail}>
                 Профайл цэс
               </a>{" "}
               рүү орно уу!
             </p>
-            
+
             <div className={styles.button1}>
               <button type="button" onClick={() => Router.back()}>
                 Буцах
               </button>
-              </div>
-              <div className={styles.button2}>
-                <button type="button" onClick={handleClick1}>
-                  Нийтлэх
-                </button>
-              </div>
+            </div>
+            <div className={styles.button2}>
+              <button type="button" onClick={handleClick1}>
+                Нийтлэх
+              </button>
+            </div>
           </form>
         </div>
-      </div></>
+      </div>
+    </>
   );
 }
 export default addItem;
